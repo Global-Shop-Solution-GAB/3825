@@ -1,0 +1,570 @@
+Program.Sub.ScreenSU.Start
+Gui.fGraphic..Create
+Gui.fGraphic..Caption("Graphic")
+Gui.fGraphic..Size(20820,10890)
+Gui.fGraphic..MinX(0)
+Gui.fGraphic..MinY(0)
+Gui.fGraphic..Position(0,0)
+Gui.fGraphic..BackColor(-2147483633)
+Gui.fGraphic..MousePointer(0)
+
+Gui.fGraphic.gsChart1.Create(gschart)
+Gui.fGraphic.gsChart1.Visible(True)
+Gui.fGraphic.gsChart1.Size(20475,6255)
+Gui.fGraphic.gsChart1.Zorder(0)
+Gui.fGraphic.gsChart1.Position(90,165)
+Gui.fGraphic.gsChart1.Enabled(True)
+Gui.fGraphic.gsChart1.Parent("fGraphic")
+
+
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uJobs.Define("Job",String,Job)
+Variable.UDT.uJobs.Define("Suffix",String,Suffix)
+Variable.UDT.uJobs.Define("Seq",String,Seq)
+Variable.UDT.uJobs.Define("Employee",String,Employee)
+Variable.UDT.uJobs.Define("Workcenter",String,Workcenter)
+Variable.UDT.uJobs.Define("Start_Date",Date,Start_Date)
+Variable.UDT.uJobs.Define("Start_Time",Date,Start_Time)
+Variable.UDT.uJobs.Define("Job_Quantity",Float,Job_Quantity)
+Variable.UDT.uJobs.Define("Hours_Estimated",Float,)
+Variable.UDT.uJobs.Define("Hours_Actual",Float,)
+variable.UDT.uJobs.Define("Time_Spent",Float)
+variable.UDT.uJobs.Define("Dept",String,Dept_Employee)
+variable.UDT.uJobs.Define("Name",String,Name)
+variable.UDT.uJobs.Define("Job_Desc",String, Job_Desc)
+Variable.uGlobal.uJobs.Declare("uJobs")
+Variable.UDT.uJob.Define("Job",String,Job)
+Variable.UDT.uJob.Define("Suffix",String,Suffix)
+Variable.UDT.uJob.Define("Seq",String,Seq)
+Variable.UDT.uJob.Define("Employee",String,Employee)
+Variable.UDT.uJob.Define("Workcenter",String,Workcenter)
+Variable.UDT.uJob.Define("Start_Date",Date,Start_Date)
+Variable.UDT.uJob.Define("Start_Time",Date,Start_Time)
+Variable.UDT.uJob.Define("Job_Quantity",Float,Job_Quantity)
+Variable.UDT.uJob.Define("Hours_Estimated",Float,)
+Variable.UDT.uJob.Define("Hours_Actual",Float,)
+variable.UDT.uJob.Define("Time_Spent",Float)
+variable.UDT.uJob.Define("Dept",String,)
+variable.UDT.uJob.Define("Name",String,)
+variable.UDT.uJob.Define("Job_Desc",String,)
+Variable.uGlobal.uJob.Declare("uJob")
+
+Variable.UDT.uDept.Define("Dept",String,Dept)
+Variable.UDT.uDept.Define("HR_DAILY_CAP",Float,HR_DAILY_CAP)
+Variable.uGlobal.uDept.Declare("uDept")
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.bExist.Declare(Boolean)
+V.Local.dStart.Declare(Date)
+V.Local.dEnd.Declare(Date)
+
+
+
+f.Intrinsic.Control.CallSub(managefiles)
+
+
+
+F.ODBC.Connection!conX.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+'Redim and Initialize our UDT's
+V.uGlobal.uJob.Redim(-1,-1)
+V.uGlobal.uJobs.Redim(-1,-1)
+
+F.Intrinsic.Control.If(v.Ambient.ISGAB2,=,False)
+	'means we aren't running in .net runtime.
+	F.Intrinsic.Control.If(V.Ambient.IsInTaskScheduler,=,True)
+		F.Intrinsic.Debug.SetLA("TrueView GAB : GCG_3825_WO_EST_ACT_TRUEVIEW.gas must be setup to run in GAB.NET Runtime.")
+		Function.Intrinsic.Control.CallSub(Unload)
+	Function.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("TrueView GAB : GCG_3825_WO_EST_ACT_TRUEVIEW.gas must be setup to run in GAB.NET Runtime.")
+		Function.Intrinsic.Control.CallSub(Unload)
+	Function.Intrinsic.Control.EndIf
+Function.Intrinsic.Control.EndIf
+
+
+'if we running from task scheduler make this thinmg silent
+f.Intrinsic.UI.SuppressOutput(v.Ambient.IsInTaskScheduler)
+
+'Check to make sure directories exist
+F.Intrinsic.String.Build("{0}\Custom\3825",V.Caller.GlobalDir,V.Local.sPath)
+F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)
+
+F.Intrinsic.Control.If(V.Local.bExist,<>,True)
+	F.Intrinsic.File.CreateDir(V.Local.sPath)
+F.Intrinsic.Control.EndIf
+
+'F.Intrinsic.String.Build("{0}3825\",V.Local.sPath,V.Local.sPath)
+'F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)
+
+'F.Intrinsic.Control.If(V.Local.bExist,<>,True)
+'	F.Intrinsic.File.CreateDir(V.Local.sPath)
+'F.Intrinsic.Control.EndIf
+
+'create Graph Folder if no exists
+F.Intrinsic.String.Build("{0}\Graphs\",V.Local.sPath,V.Local.sPath)
+F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)
+F.Intrinsic.Control.If(V.Local.bExist,<>,True)
+	F.Intrinsic.File.CreateDir(V.Local.sPath)
+F.Intrinsic.Control.EndIf
+
+Function.Intrinsic.Control.CallSub(Load_options)
+
+Function.Intrinsic.Control.CallSub(Load_data)
+
+F.Intrinsic.Control.CallSub(Render_chart)
+
+Function.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.Control.SetErrorHandler("Unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.ODBC.Connection!conX.Close
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	f.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.End
+
+Function.Intrinsic.Control.EndIf
+Program.Sub.Unload.End
+
+Program.Sub.Load_Options.Start
+F.Intrinsic.Control.SetErrorHandler("Load_Options_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'Open up GCG_3825_C
+F.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select Dept,HR_DAILY_CAP From GCG_3825_CURR_WIP")
+Function.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,<>,True)
+	'save into udt.
+	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uglobal.uDept",False)
+Function.Intrinsic.Control.EndIf
+
+f.ODBC.conX!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Load_Options_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Load_Options.End
+
+Program.Sub.Load_Data.Start
+F.Intrinsic.Control.SetErrorHandler("Load_Data_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+v.Local.sSQL.Declare(String)
+v.Local.sRet.Declare(String)
+v.Local.dCurrentTime.Declare(Date)
+v.Local.dJobStartTime.Declare(Date)
+v.Local.fT.Declare(FLoat)
+v.Local.iC.Declare(Long)
+v.Local.iR.Declare(Long)
+v.Local.fHour.Declare(Float)
+v.Local.fMin.Declare(FLoat)
+v.Local.fSec.Declare(Float)
+v.Local.sJS.Declare(String)
+v.Local.iUB.Declare(Long)
+v.Local.fHrsActPrev.Declare(Float)
+v.Local.fDailyCap.Declare(FLoat)
+'Set Current Time to now.
+v.Local.dCurrentTime.Set(v.Ambient.Now)
+'Get Data from Jobs_IN_Process_G. This will be our start of where we pull from and then get further information based on Job.
+F.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select Job, Suffix, Seq, v_employee_mstr.Employee, Dept_Employee, Workcenter +  ' - ' + Job_Desc As Job_Desc,Name,Workcenter,Start_Date,Start_Time, Job_Quantity From V_Jobs_IN_Process_G Left Join v_Employee_MSTR On V_Jobs_IN_Process_G.Employee = v_Employee_Mstr.Employee")
+F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,False)
+	'load information into our udt.
+	f.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","v.uglobal.uJobs",False,100)
+f.Intrinsic.Control.else
+	'end since we no longer have any current data to use.
+	f.ODBC.conX!rst.Close
+	f.Intrinsic.Control.CallSub(unload)
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conX!rst.Close
+
+'Load From DataTable
+'F.Data.DataTable.CreateFromSQL("JIPG","conX","Select P.Job,P.Suffix,P.Seq,P.Employee,P.Workcenter,P.Start_Date,P.Start_Time,JO.Hours_Estimated,JO.Hours_Actual from V_JOBS_IN_PROCESS_G P Left Join V_JOB_OPERATIONS JO On P.Job = JO.Job And P.Suffix = JO.Suffix And P.Seq = JO.Seq Order By Job,Suffix,Seq")
+'copy the UDT from uJobs and put into uJob.
+'then get rid of duplicate job, suffixes, since we are showing this based on job.
+f.Intrinsic.Variable.UDTCopy(V.uGlobal.uJobs,V.uGlobal.uJob,False)
+
+'flag duplicate job and suffix values
+'f.Intrinsic.Variable.UDTMultiFlagDuplicates(v.uGlobal.uJob!Job,v.uGlobal.uJob!Suffix)
+'F.Intrinsic.Variable.UDTDeleteFlagged(v.uGlobal.uJob)
+
+
+
+
+
+
+
+
+
+
+
+'Flag Duplicate Department Values into uJobs.
+'since we are going off of department now.
+'6/6/16
+'we are now going off of department as each HTML page, then within that every employee.
+F.Intrinsic.Variable.UDTMultiFlagDuplicates(V.uGlobal.uJob!Dept,v.uGlobal.uJob!Employee)
+f.Intrinsic.Variable.UDTDeleteFlagged(V.uglobal.ujob)
+'loop through our job udt and update the information that we needs.
+f.Intrinsic.Control.For(v.Local.ic,0,v.uGlobal.uJob.UBound,1)
+
+	'get our Jobs from uJobs that match the current job we are on since we are creating a summary.
+'	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uJobs!Job,v.uGlobal.uJob(v.Local.iC)!Job,v.uGlobal.uJobs!Suffix,v.uGlobal.uJobs(v.Local.iC)!Suffix,v.Local.sRet)
+
+	'Get our Departments and emloyees that match this, then find job information for each then have a summation please.
+	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uJobs!Dept,v.uGlobal.uJob(v.Local.iC)!Dept,v.uGlobal.uJobs!Employee,v.uGlobal.uJob(v.Local.iC)!Employee,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+			f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+		F.Intrinsic.Control.For(v.Local.iR,0,v.Local.sRet.UBound,1)
+			
+'			Get Actual Time Spent Right Now (sum)
+			
+			'Current Time - Start Time
+			'combine Date and Time from UDT
+			f.Intrinsic.Date.CombineDateTime(v.uGlobal.uJobs(v.Local.sRet(v.Local.iR))!Start_Date,v.uGlobal.uJobs(v.Local.sRet(v.Local.iR))!Start_Time.TimeComp,v.Local.dJobStartTime)
+			'Find Minute difference from Start Time and Current time as this is current time applied to job as they are currently working on it.
+			
+			f.Intrinsic.Date.DateDiff("N",v.Local.dJobStartTime,v.Local.dCurrentTime,v.Local.fMin)
+			'add this min value to our job udt
+			f.Intrinsic.Math.Add(v.uGlobal.uJob(v.Local.ic)!Hours_Actual,v.Local.fMin,v.uGlobal.uJob(v.Local.ic)!Hours_Actual)
+		
+		f.Intrinsic.Control.Next(v.Local.iR)
+	f.Intrinsic.Control.EndIf
+	
+	'divide our Hours_Actual in UJob by 60 , it's stored in minutes. This gives us hours. minutes
+	f.Intrinsic.Math.Div(V.uGlobal.uJob(v.Local.iC)!Hours_Actual,60,V.uGlobal.uJob(v.Local.iC)!Hours_Actual)
+	
+	'round it to 2 decis
+	f.Intrinsic.Math.Round(V.uGlobal.uJob(v.Local.iC)!Hours_Actual,2,V.uGlobal.uJob(v.Local.iC)!Hours_Actual)
+	
+	'Get Estimated Time for each job suffix seq
+	'get estimated from Job,suffix,seq Let?s take the V_Job_Operations.Hours_Estimated ? V_Job_Operations.Hours_Actual ?
+	f.Intrinsic.String.Build("Select Hours_Estimated,Hours_Actual From V_Job_Operations Where Job = '{0}' And Suffix = '{1}' And Seq = '{2}'",v.uGlobal.uJob(v.Local.ic)!Job,v.uGlobal.uJob(v.Local.ic)!Suffix,v.uGlobal.uJob(v.Local.iC)!Seq,v.Local.sSQL)
+	f.ODBC.Connection!conX.OpenLocalRecordsetRO("rst",v.Local.sSQL)
+	f.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,False)
+		'set values to UDT.
+		v.uGlobal.uJob(v.Local.ic)!Hours_Estimated.Set(V.ODBC.conX!rst.FieldVal!Hours_Estimated)
+		v.Local.fHrsActPrev.Set(v.ODBC.conX!rst.FieldValTrim!Hours_Actual)
+	F.Intrinsic.Control.EndIf
+	f.ODBC.conX!rst.Close
+	
+	'Lets Take Let?s take the V_Job_Operations.Hours_Estimated ? V_Job_Operations.Hours_Actual ? if this number is greater than Capacity, let?s cap it at Capacity for the day.  If we could put a plus sign next to the right that will let them know the estimate has more time.
+	'Estimated - Hours Actual From Operations
+	f.Intrinsic.Math.Sub(v.uGlobal.uJob(v.Local.ic)!Hours_Estimated,v.Local.fHrsActPrev,v.Local.fT)
+			
+	'Add this to our uJob Estimated Time Field
+	f.Intrinsic.Math.Add(v.uGlobal.uJob(v.Local.ic)!Hours_Estimated,v.Local.fT,v.uGlobal.uJob(v.Local.ic)!Hours_Estimated)
+
+	'look for a daily cap within our UDT by department. If not there then default to 10.
+	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uDept!Dept,v.uGlobal.uJob(v.Local.iC)!Dept,v.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+		v.Local.fDailyCap.Set(v.uGlobal.uDept(v.Local.sRet(0))!HR_DAILY_CAP)
+	Function.Intrinsic.Control.Else
+		'set it to 10
+		v.Local.fDailyCap.Set(10)
+	Function.Intrinsic.Control.EndIf
+	
+	'check to see if our summed Hours_Estimated value uJob!Hours_estimated is greater than our daily capacity if it is then we set it to our daily capacity.
+	'also make sure it's not negative.
+	f.Intrinsic.Control.If(v.uGlobal.uJob(v.Local.iC)!Hours_Estimated,>,v.local.fDailyCap)
+		'set it to our daily cap
+		v.uGlobal.uJob(v.Local.iC)!Hours_Estimated.Set(v.Local.fDailyCap)
+		
+	f.Intrinsic.Control.ElseIf(v.uGlobal.uJob(v.Local.iC)!Hours_Estimated,<,0) 
+		v.uGlobal.uJob(v.Local.iC)!Hours_Estimated.Set(0)
+	Function.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Next(v.Local.ic)
+'
+
+''loop through our DataTable to get the information and add to UDT?
+'F.Intrinsic.Control.For(v.Local.iC,1,v.datatable.JIPG.RowCount,1)
+'	'store our summed values into the uJob Udt? THey are sorted by Job,Suffix,Seq so pay attention to those values to JOb Suffix value?
+'	Function.Intrinsic.Control.If(v.Local.sJS.Trim,<>,
+'	
+'F.Intrinsic.Control.Next(v.Local.iC)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Load_Data_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Load_Data.End
+
+Program.Sub.Render_Chart.Start
+F.Intrinsic.Control.SetErrorHandler("Render_Chart_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+v.Local.iC.Declare(Long)
+v.Local.sJobSuffix.Declare(String)
+v.Local.sSeriesEstimate.Declare(String)
+v.local.sSeriesActual.declare(String)
+v.Local.sFileName.Declare(String)
+v.Local.bEx.Declare(Boolean)
+v.Local.sRet.Declare(String) 
+v.Local.iR.Declare(Long)
+v.Local.sChartName.Declare(String)
+v.Local.sDept.Declare(String) 
+
+
+
+F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uJob!Dept,False)
+'so our uJob now has dept and employee combinations. since we changed this. I have to get unique departments out of this. 
+F.Intrinsic.Variable.UDTTOSTRING(v.uGlobal.uJob,"DEPT","*!*","*!*",v.Local.sDept)
+F.Intrinsic.String.Split(v.Local.sDept,"*!*",v.Local.sDept) 
+
+F.Intrinsic.String.RemoveArrayDuplicates(v.Local.sDept,v.Local.sDept)
+
+'sort the information by dept, then employe name. 
+f.Intrinsic.Variable.UDTMultiQuickSort(v.uGlobal.uJob!Dept,False,v.uGlobal.uJob!Name,False) 
+
+
+F.Intrinsic.Control.For(v.Local.ic,0,v.Local.sDept.UBound,1)
+	'clear our our strings.
+	v.Local.sSeriesActual.Set("") 
+	v.Local.sSeriesEstimate.Set("")
+	'for each department find the records contained
+	F.Intrinsic.Variable.udtmultiseeK(v.uGlobal.uJob!Dept,v.Local.sDept(v.Local.iC).Trim,v.Local.sRet) 
+	Function.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+		Function.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+		F.Intrinsic.Control.For(v.Local.iR,0,v.Local.sRet.UBound,1)
+			'Estimate Series	
+			Function.Intrinsic.Control.If(v.Local.sSeriesEstimate.Trim,=,"")
+				f.Intrinsic.String.Build("{0} - {2}{3}{4}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Estimated,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesEstimate)
+			Function.Intrinsic.Control.Else
+				F.Intrinsic.String.Build("{2}!*!{0} - {3}{4}{5}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Estimated,v.Local.sSeriesEstimate,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesEstimate)
+			Function.Intrinsic.Control.EndIf
+			
+			'Actual Series
+			F.Intrinsic.Control.If(v.Local.sSeriesActual.Trim,=,"")
+				f.Intrinsic.String.Build("{0} - {2}{3}{4}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Actual,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesActual)
+			Function.Intrinsic.Control.Else
+				f.Intrinsic.String.Build("{2}!*!{0} - {3}{4}{5}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Actual,v.Local.sSeriesActual,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesActual)
+			Function.Intrinsic.Control.EndIf	
+		F.Intrinsic.Control.Next(v.Local.iR)
+	Function.Intrinsic.Control.EndIf
+	
+'	f.Intrinsic.String.Build
+	gui.fGraphic.gsChart1.clearchart
+	Gui.fGraphic.gsChart1.CreateVertBarChart(v.Local.sDept(v.Local.ic).Trim,"Actual",v.Local.sSeriesActual,True)
+	Gui.fGraphic.gsChart1.AddSeriesToBarChart("Estimate",v.Local.sSeriesEstimate)
+	Gui.fGraphic.gsChart1.ShowPointLabels(1)		
+	
+	
+	'Store this Image of the Chart within the Global\Trueview\3825\Graphs
+	F.Intrinsic.String.Build("WIP_VS_EST_TRUVW_{0}.png",v.Local.sDept(v.Local.iC).Trim,v.Local.sChartName)
+	F.Intrinsic.String.Build("{0}\custom\3825\Graphs\{1}",v.Caller.GlobalDir,v.Local.sChartName,v.Local.sFileName)
+	F.Intrinsic.File.Exists(v.Local.sFileName,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx,=,True)
+		f.Intrinsic.File.DeleteFile(v.Local.sFileName)
+	Function.Intrinsic.Control.EndIf
+
+	'Create Screen of Graphic.
+	Gui.fGraphic.gsChart1.ImageToFile("PNG",v.Local.sFileName)
+	
+	'render html
+	Function.Intrinsic.Control.CallSub(create_html,"Dept",v.Local.sDept(v.Local.iC),"ChartName",v.Local.sChartName)
+	
+F.Intrinsic.Control.Next(v.Local.iC)
+
+'gui.fGraphic.gsChart1.clearchart
+'Gui.fGraphic.gsChart1.CreateVertBarChart("Current WIP by Department","Actual",v.Local.sSeriesActual,True)
+'Gui.fGraphic.gsChart1.AddSeriesToBarChart("Estimate",v.Local.sSeriesEstimate)
+'
+''this no workie anyway i try it as string literal or as boolean and as numeric
+'Gui.fGraphic.gsChart1.ShowPointLabels(1)
+'
+'''gui.fGraphic..Show
+'
+''Store this Image of the Chart within the Global\Trueview\3825\Graphs
+'F.Intrinsic.String.Build("{0}\TrueView\3825\Graphs\WIP_VS_EST_TRUVW.png",v.Caller.GlobalDir,v.Local.sFileName)
+'F.Intrinsic.File.Exists(v.Local.sFileName,v.Local.bEx)
+'f.Intrinsic.Control.If(v.Local.bEx,=,True)
+'	f.Intrinsic.File.DeleteFile(v.Local.sFileName)
+'Function.Intrinsic.Control.EndIf
+
+'Create Screen of Graphic.
+'Gui.fGraphic.gsChart1.ImageToFile("PNG",v.Local.sFileName)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Render_Chart_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Render_Chart.End
+
+Program.Sub.Create_HTML.Start
+F.Intrinsic.Control.SetErrorHandler("Create_HTML_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+v.Local.sHTML.Declare(String)
+v.Local.sFQN.Declare(String)
+v.Local.sTemp.Declare(STring)
+v.Local.bEx.Declare(Boolean)
+v.Local.iHndl.Declare(Long)
+v.Local.sSQL.Declare(STRING)
+
+'really just going to copy the template and rename it.
+'replace the WIPVSESTTRVW wildcard in the template with the .png file.
+F.Intrinsic.String.Build("{0}\custom\3825\GCG_3825_WIP_TEMPLATE.html",v.Caller.GlobalDir,v.Local.sTemp)
+
+'load template into string sHtml
+f.Intrinsic.File.Exists(v.Local.sTemp,v.Local.bEx)
+F.Intrinsic.Control.If(v.Local.bEx,=,False)
+	F.Intrinsic.UI.Msgbox("Template HTML file not found.Ending...")
+	Function.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+F.Intrinsic.File.File2String(v.Local.sTemp,v.Local.sHTML)
+
+'replace our %DEPTNAME% with the Current Department we are on.
+F.Intrinsic.String.Replace(v.Local.sHTML,"%DEPTNAME%",v.Args.Dept,v.Local.sHTML)
+
+'replace our CURRENTDATETIME%% with the Current Date and Time.
+F.Intrinsic.String.Replace(v.Local.sHTML,"%CURRENTDATETIME%",v.Ambient.Now,v.Local.sHTML)
+
+'Replave our %WIPVSESTTRVW% with the png graph
+f.Intrinsic.String.Replace(v.Local.sHTML,"%CHARTNAME%",v.Args.ChartName,v.Local.sHTML)
+
+'get logo from GCG_3825_DEF_LOGO
+f.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select * from GCG_3825_DEF_LOGO")
+f.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,<>,True)
+	F.Intrinsic.String.Replace(v.Local.sHTML,"%LOGOIMG%",v.ODBC.conx!rst.FieldValTrim!LOGO_PATH,v.Local.sHTML)
+Function.Intrinsic.Control.Else 
+	F.Intrinsic.String.Replace(v.Local.sHTML,"%LOGOIMG%","customer-logo_fpo.jpg",v.Local.sHTML)
+f.Intrinsic.Control.endif
+
+f.ODBC.conX!rst.Close
+'Set Specific File Name.
+'GCG_3825_WIPvsEst_TrueView.html from template Global\TrueView\3825
+F.Intrinsic.String.Build("{0}\custom\3825\GCG_3825_WIPvsEst_{1}_TrueView.html",v.Caller.GlobalDir,v.Args.Dept,v.Local.sFQN)
+
+'if exists delete and rewrite
+f.Intrinsic.File.Exists(v.Local.sFQN,v.Local.bEx)
+f.Intrinsic.Control.If(v.Local.bEx,=,True)
+	f.Intrinsic.File.DeleteFile(v.Local.sFQN)
+Function.Intrinsic.Control.EndIf
+
+'string to file
+f.Intrinsic.File.String2File(v.Local.sFQN,v.Local.sHTML)
+
+f.Intrinsic.Control.If(V.Caller.Switches,=,"O")
+	'open taht file.
+	f.Intrinsic.File.GetHandle(v.Local.iHndl)
+	f.Intrinsic.Task.ShellExec(v.Local.iHndl,"OPEN",v.Local.sFQN,"","",1)
+Function.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Create_HTML_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Create_HTML.End
+
+Program.Sub.managefiles.Start
+F.Intrinsic.Control.SetErrorHandler("managefiles_Err")
+F.Intrinsic.Control.ClearErrors
+
+v.Local.sError.Declare
+v.Local.sDir.Declare
+v.Local.sSFile.Declare
+v.Local.bExists.Declare
+
+'check directories first
+f.Intrinsic.String.Build("{0}\custom\3825",v.Caller.GlobalDir,v.Local.sDir)
+f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bExists)
+f.Intrinsic.Control.If(v.Local.bExists,=,False)
+	f.Intrinsic.String.Replace(v.Local.sDir,"3825","",v.Local.sDir)
+	f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.String.Build("{0}\3825.zip",v.Caller.GasDir,v.Local.sSFile)
+	f.Intrinsic.File.Exists(v.Local.sSFile,v.Local.bExists)
+	f.Intrinsic.Control.If(v.Local.bExists)
+		f.Automation.Zip.UnZip(v.Local.sSFile,v.Local.sDir)
+		f.Intrinsic.File.DeleteFile(v.Local.sSFile)
+	f.Intrinsic.Control.EndIf
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Label("managefiles_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	Function.Intrinsic.Control.CallSub(unload)
+Function.Intrinsic.Control.EndIf
+Program.Sub.managefiles.End
+
+
+Program.Sub.Comments.Start
+${$0$}$$}$TRT$}$5/20/2016 8:31:43 AM$}$False
+${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$'Quote 7316
+'coder trt
+'5/18/2016
+
+'<b>Current WIP vs. Estimated Hours</b>
+This TrueView will display a bar graph that will show Current WIP on a webpage.
+
+The bar graph will compare the current work in process applied by an employee vs. estimated time of the jobs.
+
+New Tab will be added to the TrueView Option program for the user to maintain the daily hour cap to be used when comparing estimated time versus current applied time.
+
+
+<B>Workcenter Overall Equipment Effectiveness (OEE), previous 6 Months</B>
+
+This TrueView will display a line graph that shows the OEE percentage from the previous six months for workcenters.
+
+The Workcenters that will be displayed will be the ones setup through the TrueView WIP by Workcenter.
+
+The Line Graph will display the number of Months in the X axis and the OEE Percentage within the Y Axis.
+
+The GAB script can be ran through a task scheduled item or through a custom menu item.
+
+
+Program.Sub.Comments.End
+
