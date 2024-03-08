@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SyntaxEdit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Pages>
+    <DefaultPage>
+      <Header />
+      <Footer />
+    </DefaultPage>
+  </Pages>
+  <DisplayStrings />
+  <Selection>
+    <SelectionRect>
+      <Location>
+        <X>0</X>
+        <Y>506</Y>
+      </Location>
+      <Size>
+        <Width>24</Width>
+        <Height>25</Height>
+      </Size>
+      <X>0</X>
+      <Y>506</Y>
+      <Width>24</Width>
+      <Height>25</Height>
+    </SelectionRect>
+    <Options>UseColors OverwriteBlocks SelectLineOnTripleClick CopyLineWhenEmpty SelectWordOnCtrlClick</Options>
+  </Selection>
+  <Gutter>
+    <Options>PaintLineNumbers PaintBookMarks PaintLineModificators</Options>
+  </Gutter>
+  <Margin>
+    <Visible>false</Visible>
+  </Margin>
+  <LineStyles />
+  <LineSeparator />
+  <Printing>
+    <Footer />
+    <Header />
+  </Printing>
+  <WhiteSpace />
+  <TextSource>
+    <Position>
+      <X>0</X>
+      <Y>506</Y>
+    </Position>
+    <Lexer>
+      <Scheme>
+        <Author>Quantum Whale, LLC.</Author>
+        <Copyright>Copyright (c) 2004 - 2014 Quantum Whale LLC.</Copyright>
+        <FileType>gas</FileType>
+        <Version>1.5</Version>
+        <Styles>
+          <Style>
+            <Name>idents</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>numbers</Name>
+            <ForeColor>ControlText</ForeColor>
+          </Style>
+          <Style>
+            <Name>reswords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>comments</Name>
+            <ForeColor>Green</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>xmlcomments</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>symbols</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>whitespace</Name>
+            <ForeColor>WindowText</ForeColor>
+          </Style>
+          <Style>
+            <Name>strings</Name>
+            <ForeColor>Maroon</ForeColor>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>directives</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>htmlparams</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>syntax errors</Name>
+            <ForeColor>Red</ForeColor>
+          </Style>
+          <Style>
+            <Name>codes nippets</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>255:180:228:180</BackColor>
+          </Style>
+          <Style>
+            <Name>GabReservedWords</Name>
+            <ForeColor>Blue</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabTokenWithBrackets</Name>
+            <ForeColor>Gray</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabFunctionIntrinsicDebug</Name>
+            <ForeColor>White</ForeColor>
+            <BackColor>Red</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+          <Style>
+            <Name>GabVariable</Name>
+            <ForeColor>Teal</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabVariableSystemDefined</Name>
+            <ForeColor>Teal</ForeColor>
+            <FontStyle>Bold Italic</FontStyle>
+          </Style>
+          <Style>
+            <Name>GabGui</Name>
+            <ForeColor>OrangeRed</ForeColor>
+          </Style>
+          <Style>
+            <Name>GabProgramSubStartEnd</Name>
+            <ForeColor>Black</ForeColor>
+            <BackColor>LightGray</BackColor>
+            <FontStyle>Bold</FontStyle>
+            <PlainText>true</PlainText>
+          </Style>
+        </Styles>
+      </Scheme>
+    </Lexer>
+    <TextStrings>
+      <Lines>
+        <string>Program.Sub.ScreenSU.Start</string>
+        <string>Gui.fGraphic..Create</string>
+        <string>Gui.fGraphic..Caption("Graphic")</string>
+        <string>Gui.fGraphic..Size(20820,10890)</string>
+        <string>Gui.fGraphic..MinX(0)</string>
+        <string>Gui.fGraphic..MinY(0)</string>
+        <string>Gui.fGraphic..Position(0,0)</string>
+        <string>Gui.fGraphic..BackColor(-2147483633)</string>
+        <string>Gui.fGraphic..MousePointer(0)</string>
+        <string />
+        <string>Gui.fGraphic.gsChart1.Create(gschart)</string>
+        <string>Gui.fGraphic.gsChart1.Visible(True)</string>
+        <string>Gui.fGraphic.gsChart1.Size(20475,6255)</string>
+        <string>Gui.fGraphic.gsChart1.Zorder(0)</string>
+        <string>Gui.fGraphic.gsChart1.Position(90,165)</string>
+        <string>Gui.fGraphic.gsChart1.Enabled(True)</string>
+        <string>Gui.fGraphic.gsChart1.Parent("fGraphic")</string>
+        <string />
+        <string />
+        <string />
+        <string />
+        <string>Program.Sub.ScreenSU.End</string>
+        <string />
+        <string>Program.Sub.Preflight.Start</string>
+        <string />
+        <string>Variable.UDT.uJobs.Define("Job",String,Job)</string>
+        <string>Variable.UDT.uJobs.Define("Suffix",String,Suffix)</string>
+        <string>Variable.UDT.uJobs.Define("Seq",String,Seq)</string>
+        <string>Variable.UDT.uJobs.Define("Employee",String,Employee)</string>
+        <string>Variable.UDT.uJobs.Define("Workcenter",String,Workcenter)</string>
+        <string>Variable.UDT.uJobs.Define("Start_Date",Date,Start_Date)</string>
+        <string>Variable.UDT.uJobs.Define("Start_Time",Date,Start_Time)</string>
+        <string>Variable.UDT.uJobs.Define("Job_Quantity",Float,Job_Quantity)</string>
+        <string>Variable.UDT.uJobs.Define("Hours_Estimated",Float,)</string>
+        <string>Variable.UDT.uJobs.Define("Hours_Actual",Float,)</string>
+        <string>variable.UDT.uJobs.Define("Time_Spent",Float)</string>
+        <string>variable.UDT.uJobs.Define("Dept",String,Dept_Employee)</string>
+        <string>variable.UDT.uJobs.Define("Name",String,Name)</string>
+        <string>variable.UDT.uJobs.Define("Job_Desc",String, Job_Desc)</string>
+        <string>Variable.uGlobal.uJobs.Declare("uJobs")</string>
+        <string>Variable.UDT.uJob.Define("Job",String,Job)</string>
+        <string>Variable.UDT.uJob.Define("Suffix",String,Suffix)</string>
+        <string>Variable.UDT.uJob.Define("Seq",String,Seq)</string>
+        <string>Variable.UDT.uJob.Define("Employee",String,Employee)</string>
+        <string>Variable.UDT.uJob.Define("Workcenter",String,Workcenter)</string>
+        <string>Variable.UDT.uJob.Define("Start_Date",Date,Start_Date)</string>
+        <string>Variable.UDT.uJob.Define("Start_Time",Date,Start_Time)</string>
+        <string>Variable.UDT.uJob.Define("Job_Quantity",Float,Job_Quantity)</string>
+        <string>Variable.UDT.uJob.Define("Hours_Estimated",Float,)</string>
+        <string>Variable.UDT.uJob.Define("Hours_Actual",Float,)</string>
+        <string>variable.UDT.uJob.Define("Time_Spent",Float)</string>
+        <string>variable.UDT.uJob.Define("Dept",String,)</string>
+        <string>variable.UDT.uJob.Define("Name",String,)</string>
+        <string>variable.UDT.uJob.Define("Job_Desc",String,)</string>
+        <string>Variable.uGlobal.uJob.Declare("uJob")</string>
+        <string />
+        <string>Variable.UDT.uDept.Define("Dept",String,Dept)</string>
+        <string>Variable.UDT.uDept.Define("HR_DAILY_CAP",Float,HR_DAILY_CAP)</string>
+        <string>Variable.uGlobal.uDept.Declare("uDept")</string>
+        <string />
+        <string>Program.Sub.Preflight.End</string>
+        <string />
+        <string>Program.Sub.Main.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Main_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>V.Local.sPath.Declare(String)</string>
+        <string>V.Local.bExist.Declare(Boolean)</string>
+        <string>V.Local.dStart.Declare(Date)</string>
+        <string>V.Local.dEnd.Declare(Date)</string>
+        <string />
+        <string />
+        <string>F.ODBC.Connection!conX.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)</string>
+        <string />
+        <string>'Redim and Initialize our UDT's</string>
+        <string>V.uGlobal.uJob.Redim(-1,-1)</string>
+        <string>V.uGlobal.uJobs.Redim(-1,-1)</string>
+        <string />
+        <string>F.Intrinsic.Control.If(v.Ambient.ISGAB2,=,False)</string>
+        <string>	'means we aren't running in .net runtime.</string>
+        <string>	F.Intrinsic.Control.If(V.Ambient.IsInTaskScheduler,=,True)</string>
+        <string>		F.Intrinsic.Debug.SetLA("TrueView GAB : GCG_3825_WO_EST_ACT_TRUEVIEW.gas must be setup to run in GAB.NET Runtime.")</string>
+        <string>		Function.Intrinsic.Control.CallSub(Unload)</string>
+        <string>	Function.Intrinsic.Control.Else</string>
+        <string>		F.Intrinsic.UI.Msgbox("TrueView GAB : GCG_3825_WO_EST_ACT_TRUEVIEW.gas must be setup to run in GAB.NET Runtime.")</string>
+        <string>		Function.Intrinsic.Control.CallSub(Unload)</string>
+        <string>	Function.Intrinsic.Control.EndIf</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string />
+        <string>'if we running from task scheduler make this thinmg silent</string>
+        <string>f.Intrinsic.UI.SuppressOutput(v.Ambient.IsInTaskScheduler)</string>
+        <string />
+        <string>'Check to make sure directories exist</string>
+        <string>F.Intrinsic.String.Build("{0}\TrueView\",V.Caller.GlobalDir,V.Local.sPath)</string>
+        <string>F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)</string>
+        <string />
+        <string>F.Intrinsic.Control.If(V.Local.bExist,&lt;&gt;,True)</string>
+        <string>	F.Intrinsic.File.CreateDir(V.Local.sPath)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.Intrinsic.String.Build("{0}3825\",V.Local.sPath,V.Local.sPath)</string>
+        <string>F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)</string>
+        <string />
+        <string>F.Intrinsic.Control.If(V.Local.bExist,&lt;&gt;,True)</string>
+        <string>	F.Intrinsic.File.CreateDir(V.Local.sPath)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>'create Graph Folder if no exists</string>
+        <string>F.Intrinsic.String.Build("{0}Graphs\",V.Local.sPath,V.Local.sPath)</string>
+        <string>F.Intrinsic.File.DirExists(V.Local.sPath,V.Local.bExist)</string>
+        <string>F.Intrinsic.Control.If(V.Local.bExist,&lt;&gt;,True)</string>
+        <string>	F.Intrinsic.File.CreateDir(V.Local.sPath)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>Function.Intrinsic.Control.CallSub(Load_options)</string>
+        <string />
+        <string>Function.Intrinsic.Control.CallSub(Load_data)</string>
+        <string />
+        <string>F.Intrinsic.Control.CallSub(Render_chart)</string>
+        <string />
+        <string>Function.Intrinsic.Control.CallSub(Unload)</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Main_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	Function.Intrinsic.Control.CallSub(Unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>Program.Sub.Main.End</string>
+        <string />
+        <string>Program.Sub.Unload.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Unload_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>F.ODBC.Connection!conX.Close</string>
+        <string />
+        <string>F.Intrinsic.Control.End</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Unload_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	f.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	Function.Intrinsic.Control.End</string>
+        <string />
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Unload.End</string>
+        <string />
+        <string>Program.Sub.Load_Options.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Load_Options_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string />
+        <string>'Open up GCG_3825_C</string>
+        <string>F.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select Dept,HR_DAILY_CAP From GCG_3825_CURR_WIP")</string>
+        <string>Function.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,&lt;&gt;,True)</string>
+        <string>	'save into udt.</string>
+        <string>	F.Intrinsic.Variable.LoadUDTFromRecordset("conx","rst","v.uglobal.uDept",False)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>f.ODBC.conX!rst.Close</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Load_Options_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	f.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Load_Options.End</string>
+        <string />
+        <string>Program.Sub.Load_Data.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Load_Data_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>v.Local.sSQL.Declare(String)</string>
+        <string>v.Local.sRet.Declare(String)</string>
+        <string>v.Local.dCurrentTime.Declare(Date)</string>
+        <string>v.Local.dJobStartTime.Declare(Date)</string>
+        <string>v.Local.fT.Declare(FLoat)</string>
+        <string>v.Local.iC.Declare(Long)</string>
+        <string>v.Local.iR.Declare(Long)</string>
+        <string>v.Local.fHour.Declare(Float)</string>
+        <string>v.Local.fMin.Declare(FLoat)</string>
+        <string>v.Local.fSec.Declare(Float)</string>
+        <string>v.Local.sJS.Declare(String)</string>
+        <string>v.Local.iUB.Declare(Long)</string>
+        <string>v.Local.fHrsActPrev.Declare(Float)</string>
+        <string>v.Local.fDailyCap.Declare(FLoat)</string>
+        <string>'Set Current Time to now.</string>
+        <string>v.Local.dCurrentTime.Set(v.Ambient.Now)</string>
+        <string>'Get Data from Jobs_IN_Process_G. This will be our start of where we pull from and then get further information based on Job.</string>
+        <string>F.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select Job,Suffix,Seq,Employee,Dept_Employee,Workcenter +  ' - ' + Job_Desc As Job_Desc,Name,Workcenter,Start_Date,Start_Time, Job_Quantity From V_Jobs_IN_Process_G Left Join Employee_MSTR On V_Jobs_IN_Process_G.Employee = Employee_Mstr.Employee")</string>
+        <string>F.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,False)</string>
+        <string>	'load information into our udt.</string>
+        <string>	f.Intrinsic.Variable.LoadUDTFromRecordset("conX","rst","v.uglobal.uJobs",False,100)</string>
+        <string>f.Intrinsic.Control.else</string>
+        <string>	'end since we no longer have any current data to use.</string>
+        <string>	f.ODBC.conX!rst.Close</string>
+        <string>	f.Intrinsic.Control.CallSub(unload)</string>
+        <string>F.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.ODBC.conX!rst.Close</string>
+        <string />
+        <string>'Load From DataTable</string>
+        <string>'F.Data.DataTable.CreateFromSQL("JIPG","conX","Select P.Job,P.Suffix,P.Seq,P.Employee,P.Workcenter,P.Start_Date,P.Start_Time,JO.Hours_Estimated,JO.Hours_Actual from V_JOBS_IN_PROCESS_G P Left Join V_JOB_OPERATIONS JO On P.Job = JO.Job And P.Suffix = JO.Suffix And P.Seq = JO.Seq Order By Job,Suffix,Seq")</string>
+        <string>'copy the UDT from uJobs and put into uJob.</string>
+        <string>'then get rid of duplicate job, suffixes, since we are showing this based on job.</string>
+        <string>f.Intrinsic.Variable.UDTCopy(V.uGlobal.uJobs,V.uGlobal.uJob,False)</string>
+        <string />
+        <string>'flag duplicate job and suffix values</string>
+        <string>'f.Intrinsic.Variable.UDTMultiFlagDuplicates(v.uGlobal.uJob!Job,v.uGlobal.uJob!Suffix)</string>
+        <string>'F.Intrinsic.Variable.UDTDeleteFlagged(v.uGlobal.uJob)</string>
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string />
+        <string>'Flag Duplicate Department Values into uJobs.</string>
+        <string>'since we are going off of department now.</string>
+        <string>'6/6/16</string>
+        <string>'we are now going off of department as each HTML page, then within that every employee.</string>
+        <string>F.Intrinsic.Variable.UDTMultiFlagDuplicates(V.uGlobal.uJob!Dept,v.uGlobal.uJob!Employee)</string>
+        <string>f.Intrinsic.Variable.UDTDeleteFlagged(V.uglobal.ujob)</string>
+        <string>'loop through our job udt and update the information that we needs.</string>
+        <string>f.Intrinsic.Control.For(v.Local.ic,0,v.uGlobal.uJob.UBound,1)</string>
+        <string />
+        <string>	'get our Jobs from uJobs that match the current job we are on since we are creating a summary.</string>
+        <string>'	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uJobs!Job,v.uGlobal.uJob(v.Local.iC)!Job,v.uGlobal.uJobs!Suffix,v.uGlobal.uJobs(v.Local.iC)!Suffix,v.Local.sRet)</string>
+        <string />
+        <string>	'Get our Departments and emloyees that match this, then find job information for each then have a summation please.</string>
+        <string>	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uJobs!Dept,v.uGlobal.uJob(v.Local.iC)!Dept,v.uGlobal.uJobs!Employee,v.uGlobal.uJob(v.Local.iC)!Employee,v.Local.sRet)</string>
+        <string>	f.Intrinsic.Control.If(v.Local.sRet.Trim,&lt;&gt;,"")</string>
+        <string>			f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)</string>
+        <string>		F.Intrinsic.Control.For(v.Local.iR,0,v.Local.sRet.UBound,1)</string>
+        <string>			</string>
+        <string>'			Get Actual Time Spent Right Now (sum)</string>
+        <string>			</string>
+        <string>			'Current Time - Start Time</string>
+        <string>			'combine Date and Time from UDT</string>
+        <string>			f.Intrinsic.Date.CombineDateTime(v.uGlobal.uJobs(v.Local.sRet(v.Local.iR))!Start_Date,v.uGlobal.uJobs(v.Local.sRet(v.Local.iR))!Start_Time.TimeComp,v.Local.dJobStartTime)</string>
+        <string>			'Find Minute difference from Start Time and Current time as this is current time applied to job as they are currently working on it.</string>
+        <string>			</string>
+        <string>			f.Intrinsic.Date.DateDiff("N",v.Local.dJobStartTime,v.Local.dCurrentTime,v.Local.fMin)</string>
+        <string>			'add this min value to our job udt</string>
+        <string>			f.Intrinsic.Math.Add(v.uGlobal.uJob(v.Local.ic)!Hours_Actual,v.Local.fMin,v.uGlobal.uJob(v.Local.ic)!Hours_Actual)</string>
+        <string>		</string>
+        <string>		f.Intrinsic.Control.Next(v.Local.iR)</string>
+        <string>	f.Intrinsic.Control.EndIf</string>
+        <string>	</string>
+        <string>	'divide our Hours_Actual in UJob by 60 , it's stored in minutes. This gives us hours. minutes</string>
+        <string>	f.Intrinsic.Math.Div(V.uGlobal.uJob(v.Local.iC)!Hours_Actual,60,V.uGlobal.uJob(v.Local.iC)!Hours_Actual)</string>
+        <string>	</string>
+        <string>	'round it to 2 decis</string>
+        <string>	f.Intrinsic.Math.Round(V.uGlobal.uJob(v.Local.iC)!Hours_Actual,2,V.uGlobal.uJob(v.Local.iC)!Hours_Actual)</string>
+        <string>	</string>
+        <string>	'Get Estimated Time for each job suffix seq</string>
+        <string>	'get estimated from Job,suffix,seq Let?s take the V_Job_Operations.Hours_Estimated ? V_Job_Operations.Hours_Actual ?</string>
+        <string>	f.Intrinsic.String.Build("Select Hours_Estimated,Hours_Actual From V_Job_Operations Where Job = '{0}' And Suffix = '{1}' And Seq = '{2}'",v.uGlobal.uJob(v.Local.ic)!Job,v.uGlobal.uJob(v.Local.ic)!Suffix,v.uGlobal.uJob(v.Local.iC)!Seq,v.Local.sSQL)</string>
+        <string>	f.ODBC.Connection!conX.OpenLocalRecordsetRO("rst",v.Local.sSQL)</string>
+        <string>	f.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,=,False)</string>
+        <string>		'set values to UDT.</string>
+        <string>		v.uGlobal.uJob(v.Local.ic)!Hours_Estimated.Set(V.ODBC.conX!rst.FieldVal!Hours_Estimated)</string>
+        <string>		v.Local.fHrsActPrev.Set(v.ODBC.conX!rst.FieldValTrim!Hours_Actual)</string>
+        <string>	F.Intrinsic.Control.EndIf</string>
+        <string>	f.ODBC.conX!rst.Close</string>
+        <string>	</string>
+        <string>	'Lets Take Let?s take the V_Job_Operations.Hours_Estimated ? V_Job_Operations.Hours_Actual ? if this number is greater than Capacity, let?s cap it at Capacity for the day.  If we could put a plus sign next to the right that will let them know the estimate has more time.</string>
+        <string>	'Estimated - Hours Actual From Operations</string>
+        <string>	f.Intrinsic.Math.Sub(v.uGlobal.uJob(v.Local.ic)!Hours_Estimated,v.Local.fHrsActPrev,v.Local.fT)</string>
+        <string>			</string>
+        <string>	'Add this to our uJob Estimated Time Field</string>
+        <string>	f.Intrinsic.Math.Add(v.uGlobal.uJob(v.Local.ic)!Hours_Estimated,v.Local.fT,v.uGlobal.uJob(v.Local.ic)!Hours_Estimated)</string>
+        <string />
+        <string>	'look for a daily cap within our UDT by department. If not there then default to 10.</string>
+        <string>	F.Intrinsic.Variable.UDTMultiSeek(v.uGlobal.uDept!Dept,v.uGlobal.uJob(v.Local.iC)!Dept,v.Local.sRet)</string>
+        <string>	F.Intrinsic.Control.If(V.Local.sRet.Trim,&lt;&gt;,"")</string>
+        <string>		f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)</string>
+        <string>		v.Local.fDailyCap.Set(v.uGlobal.uDept(v.Local.sRet(0))!HR_DAILY_CAP)</string>
+        <string>	Function.Intrinsic.Control.Else</string>
+        <string>		'set it to 10</string>
+        <string>		v.Local.fDailyCap.Set(10)</string>
+        <string>	Function.Intrinsic.Control.EndIf</string>
+        <string>	</string>
+        <string>	'check to see if our summed Hours_Estimated value uJob!Hours_estimated is greater than our daily capacity if it is then we set it to our daily capacity.</string>
+        <string>	'also make sure it's not negative.</string>
+        <string>	f.Intrinsic.Control.If(v.uGlobal.uJob(v.Local.iC)!Hours_Estimated,&gt;,v.local.fDailyCap)</string>
+        <string>		'set it to our daily cap</string>
+        <string>		v.uGlobal.uJob(v.Local.iC)!Hours_Estimated.Set(v.Local.fDailyCap)</string>
+        <string>		</string>
+        <string>	f.Intrinsic.Control.ElseIf(v.uGlobal.uJob(v.Local.iC)!Hours_Estimate,&lt;,0) </string>
+        <string>		v.uGlobal.uJob(v.Local.iC)!Hours_Estimated.Set(0)</string>
+        <string>	Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>F.Intrinsic.Control.Next(v.Local.ic)</string>
+        <string>'</string>
+        <string />
+        <string>''loop through our DataTable to get the information and add to UDT?</string>
+        <string>'F.Intrinsic.Control.For(v.Local.iC,1,v.datatable.JIPG.RowCount,1)</string>
+        <string>'	'store our summed values into the uJob Udt? THey are sorted by Job,Suffix,Seq so pay attention to those values to JOb Suffix value?</string>
+        <string>'	Function.Intrinsic.Control.If(v.Local.sJS.Trim,&lt;&gt;,</string>
+        <string>'	</string>
+        <string>'F.Intrinsic.Control.Next(v.Local.iC)</string>
+        <string />
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Load_Data_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	Function.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Load_Data.End</string>
+        <string />
+        <string>Program.Sub.Render_Chart.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Render_Chart_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>v.Local.iC.Declare(Long)</string>
+        <string>v.Local.sJobSuffix.Declare(String)</string>
+        <string>v.Local.sSeriesEstimate.Declare(String)</string>
+        <string>v.local.sSeriesActual.declare(String)</string>
+        <string>v.Local.sFileName.Declare(String)</string>
+        <string>v.Local.bEx.Declare(Boolean)</string>
+        <string>v.Local.sRet.Declare(String) </string>
+        <string>v.Local.iR.Declare(Long)</string>
+        <string>v.Local.sChartName.Declare(String)</string>
+        <string>v.Local.sDept.Declare(String) </string>
+        <string />
+        <string />
+        <string />
+        <string>F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uJob!Dept,False)</string>
+        <string>'so our uJob now has dept and employee combinations. since we changed this. I have to get unique departments out of this. </string>
+        <string>F.Intrinsic.Variable.UDTTOSTRING(v.uGlobal.uJob,"DEPT","*!*","*!*",v.Local.sDept)</string>
+        <string>F.Intrinsic.String.Split(v.Local.sDept,"*!*",v.Local.sDept) </string>
+        <string />
+        <string>F.Intrinsic.String.RemoveArrayDuplicates(v.Local.sDept,v.Local.sDept)</string>
+        <string />
+        <string>'sort the information by dept, then employe name. </string>
+        <string>f.Intrinsic.Variable.UDTMultiQuickSort(v.uGlobal.uJob!Dept,False,v.uGlobal.uJob!Name,False) </string>
+        <string />
+        <string />
+        <string>F.Intrinsic.Control.For(v.Local.ic,0,v.Local.sDept.UBound,1)</string>
+        <string>	'clear our our strings.</string>
+        <string>	v.Local.sSeriesActual.Set("") </string>
+        <string>	v.Local.sSeriesEstimate.Set("")</string>
+        <string>	'for each department find the records contained</string>
+        <string>	F.Intrinsic.Variable.udtmultiseeK(v.uGlobal.uJob!Dept,v.Local.sDept(v.Local.iC).Trim,v.Local.sRet) </string>
+        <string>	Function.Intrinsic.Control.If(v.Local.sRet.Trim,&lt;&gt;,"")</string>
+        <string>		Function.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)</string>
+        <string>		F.Intrinsic.Control.For(v.Local.iR,0,v.Local.sRet.UBound,1)</string>
+        <string>			'Estimate Series	</string>
+        <string>			Function.Intrinsic.Control.If(v.Local.sSeriesEstimate.Trim,=,"")</string>
+        <string>				f.Intrinsic.String.Build("{0} - {2}{3}{4}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Estimated,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesEstimate)</string>
+        <string>			Function.Intrinsic.Control.Else</string>
+        <string>				F.Intrinsic.String.Build("{2}!*!{0} - {3}{4}{5}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Estimated,v.Local.sSeriesEstimate,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesEstimate)</string>
+        <string>			Function.Intrinsic.Control.EndIf</string>
+        <string>			</string>
+        <string>			'Actual Series</string>
+        <string>			F.Intrinsic.Control.If(v.Local.sSeriesActual.Trim,=,"")</string>
+        <string>				f.Intrinsic.String.Build("{0} - {2}{3}{4}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Actual,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesActual)</string>
+        <string>			Function.Intrinsic.Control.Else</string>
+        <string>				f.Intrinsic.String.Build("{2}!*!{0} - {3}{4}{5}*!*{1}",v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Employee,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Hours_Actual,v.Local.sSeriesActual,v.uGlobal.uJob(v.Local.sRet(v.Local.iR))!Name,v.Ambient.NewLine,v.uGlobal.uJob(v.Local.sret(v.Local.iR))!Job_Desc,v.Local.sSeriesActual)</string>
+        <string>			Function.Intrinsic.Control.EndIf	</string>
+        <string>		F.Intrinsic.Control.Next(v.Local.iR)</string>
+        <string>	Function.Intrinsic.Control.EndIf</string>
+        <string>	</string>
+        <string>'	f.Intrinsic.String.Build</string>
+        <string>	gui.fGraphic.gsChart1.clearchart</string>
+        <string>	Gui.fGraphic.gsChart1.CreateVertBarChart(v.Local.sDept(v.Local.ic).Trim,"Actual",v.Local.sSeriesActual,True)</string>
+        <string>	Gui.fGraphic.gsChart1.AddSeriesToBarChart("Estimate",v.Local.sSeriesEstimate)</string>
+        <string>	Gui.fGraphic.gsChart1.ShowPointLabels(1)		</string>
+        <string>	</string>
+        <string>	</string>
+        <string>	'Store this Image of the Chart within the Global\Trueview\3825\Graphs</string>
+        <string>	F.Intrinsic.String.Build("WIP_VS_EST_TRUVW_{0}.png",v.Local.sDept(v.Local.iC).Trim,v.Local.sChartName)</string>
+        <string>	F.Intrinsic.String.Build("{0}\TrueView\3825\Graphs\{1}",v.Caller.GlobalDir,v.Local.sChartName,v.Local.sFileName)</string>
+        <string>	F.Intrinsic.File.Exists(v.Local.sFileName,v.Local.bEx)</string>
+        <string>	f.Intrinsic.Control.If(v.Local.bEx,=,True)</string>
+        <string>		f.Intrinsic.File.DeleteFile(v.Local.sFileName)</string>
+        <string>	Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>	'Create Screen of Graphic.</string>
+        <string>	Gui.fGraphic.gsChart1.ImageToFile("PNG",v.Local.sFileName)</string>
+        <string>	</string>
+        <string>	'render html</string>
+        <string>	Function.Intrinsic.Control.CallSub(create_html,"Dept",v.Local.sDept(v.Local.iC),"ChartName",v.Local.sChartName)</string>
+        <string>	</string>
+        <string>F.Intrinsic.Control.Next(v.Local.iC)</string>
+        <string />
+        <string>'gui.fGraphic.gsChart1.clearchart</string>
+        <string>'Gui.fGraphic.gsChart1.CreateVertBarChart("Current WIP by Department","Actual",v.Local.sSeriesActual,True)</string>
+        <string>'Gui.fGraphic.gsChart1.AddSeriesToBarChart("Estimate",v.Local.sSeriesEstimate)</string>
+        <string>'</string>
+        <string>''this no workie anyway i try it as string literal or as boolean and as numeric</string>
+        <string>'Gui.fGraphic.gsChart1.ShowPointLabels(1)</string>
+        <string>'</string>
+        <string>'''gui.fGraphic..Show</string>
+        <string>'</string>
+        <string>''Store this Image of the Chart within the Global\Trueview\3825\Graphs</string>
+        <string>'F.Intrinsic.String.Build("{0}\TrueView\3825\Graphs\WIP_VS_EST_TRUVW.png",v.Caller.GlobalDir,v.Local.sFileName)</string>
+        <string>'F.Intrinsic.File.Exists(v.Local.sFileName,v.Local.bEx)</string>
+        <string>'f.Intrinsic.Control.If(v.Local.bEx,=,True)</string>
+        <string>'	f.Intrinsic.File.DeleteFile(v.Local.sFileName)</string>
+        <string>'Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>'Create Screen of Graphic.</string>
+        <string>'Gui.fGraphic.gsChart1.ImageToFile("PNG",v.Local.sFileName)</string>
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Render_Chart_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	Function.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Render_Chart.End</string>
+        <string />
+        <string>Program.Sub.Create_HTML.Start</string>
+        <string>F.Intrinsic.Control.SetErrorHandler("Create_HTML_Err")</string>
+        <string>F.Intrinsic.Control.ClearErrors</string>
+        <string />
+        <string>V.Local.sError.Declare(String)</string>
+        <string>v.Local.sHTML.Declare(String)</string>
+        <string>v.Local.sFQN.Declare(String)</string>
+        <string>v.Local.sTemp.Declare(STring)</string>
+        <string>v.Local.bEx.Declare(Boolean)</string>
+        <string>v.Local.iHndl.Declare(Long)</string>
+        <string>v.Local.sSQL.Declare(STRING)</string>
+        <string />
+        <string>'really just going to copy the template and rename it.</string>
+        <string>'replace the WIPVSESTTRVW wildcard in the template with the .png file.</string>
+        <string>F.Intrinsic.String.Build("{0}\Trueview\3825\GCG_3825_WIP_TEMPLATE.html",v.Caller.GlobalDir,v.Local.sTemp)</string>
+        <string />
+        <string>'load template into string sHtml</string>
+        <string>f.Intrinsic.File.Exists(v.Local.sTemp,v.Local.bEx)</string>
+        <string>F.Intrinsic.Control.If(v.Local.bEx,=,False)</string>
+        <string>	F.Intrinsic.UI.Msgbox("Template HTML file not found.Ending...")</string>
+        <string>	Function.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>F.Intrinsic.File.File2String(v.Local.sTemp,v.Local.sHTML)</string>
+        <string />
+        <string>'replace our %DEPTNAME% with the Current Department we are on.</string>
+        <string>F.Intrinsic.String.Replace(v.Local.sHTML,"%DEPTNAME%",v.Args.Dept,v.Local.sHTML)</string>
+        <string />
+        <string>'replace our CURRENTDATETIME%% with the Current Date and Time.</string>
+        <string>F.Intrinsic.String.Replace(v.Local.sHTML,"%CURRENTDATETIME%",v.Ambient.Now,v.Local.sHTML)</string>
+        <string />
+        <string>'Replave our %WIPVSESTTRVW% with the png graph</string>
+        <string>f.Intrinsic.String.Replace(v.Local.sHTML,"%CHARTNAME%",v.Args.ChartName,v.Local.sHTML)</string>
+        <string />
+        <string>'get logo from GCG_3825_DEF_LOGO</string>
+        <string>f.ODBC.Connection!conX.OpenLocalRecordsetRO("rst","Select * from GCG_3825_DEF_LOGO")</string>
+        <string>f.Intrinsic.Control.If(V.ODBC.conX!rst.EOF,&lt;&gt;,True)</string>
+        <string>	F.Intrinsic.String.Replace(v.Local.sHTML,"%LOGOIMG%",v.ODBC.conx!rst.FieldValTrim!LOGO_PATH,v.Local.sHTML)</string>
+        <string>Function.Intrinsic.Control.Else </string>
+        <string>	F.Intrinsic.String.Replace(v.Local.sHTML,"%LOGOIMG%","customer-logo_fpo.jpg",v.Local.sHTML)</string>
+        <string>f.Intrinsic.Control.endif</string>
+        <string />
+        <string>f.ODBC.conX!rst.Close</string>
+        <string>'Set Specific File Name.</string>
+        <string>'GCG_3825_WIPvsEst_TrueView.html from template Global\TrueView\3825</string>
+        <string>F.Intrinsic.String.Build("{0}\TrueView\3825\GCG_3825_WIPvsEst_{1}_TrueView.html",v.Caller.GlobalDir,v.Args.Dept,v.Local.sFQN)</string>
+        <string />
+        <string>'if exists delete and rewrite</string>
+        <string>f.Intrinsic.File.Exists(v.Local.sFQN,v.Local.bEx)</string>
+        <string>f.Intrinsic.Control.If(v.Local.bEx,=,True)</string>
+        <string>	f.Intrinsic.File.DeleteFile(v.Local.sFQN)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string />
+        <string>'string to file</string>
+        <string>f.Intrinsic.File.String2File(v.Local.sFQN,v.Local.sHTML)</string>
+        <string />
+        <string>f.Intrinsic.Control.If(V.Caller.Switches,=,"O")</string>
+        <string>	'open taht file.</string>
+        <string>	f.Intrinsic.File.GetHandle(v.Local.iHndl)</string>
+        <string>	f.Intrinsic.Task.ShellExec(v.Local.iHndl,"OPEN",v.Local.sFQN,"","",1)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>F.Intrinsic.Control.ExitSub</string>
+        <string />
+        <string>F.Intrinsic.Control.Label("Create_HTML_Err")</string>
+        <string>F.Intrinsic.Control.If(V.Ambient.ErrorNumber,&lt;&gt;,0)</string>
+        <string>	Function.Intrinsic.String.Concat("Project: GCG_3825_WO_Est_Vs_Act_TrueView.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)</string>
+        <string>	F.Intrinsic.UI.Msgbox(V.Local.sError)</string>
+        <string>	Function.Intrinsic.Control.CallSub(unload)</string>
+        <string>Function.Intrinsic.Control.EndIf</string>
+        <string>Program.Sub.Create_HTML.End</string>
+        <string />
+        <string>Program.Sub.Comments.Start</string>
+        <string>${$0$}$$}$TRT$}$5/20/2016 8:31:43 AM$}$False</string>
+        <string>${$3$}$0$}$$}$0$}$-1$}$$}$12:00:00 AM$}$'Quote 7316</string>
+        <string>'coder trt</string>
+        <string>'5/18/2016</string>
+        <string />
+        <string>'&lt;b&gt;Current WIP vs. Estimated Hours&lt;/b&gt;</string>
+        <string>This TrueView will display a bar graph that will show Current WIP on a webpage.</string>
+        <string />
+        <string>The bar graph will compare the current work in process applied by an employee vs. estimated time of the jobs.</string>
+        <string />
+        <string>New Tab will be added to the TrueView Option program for the user to maintain the daily hour cap to be used when comparing estimated time versus current applied time.</string>
+        <string />
+        <string />
+        <string>&lt;B&gt;Workcenter Overall Equipment Effectiveness (OEE), previous 6 Months&lt;/B&gt;</string>
+        <string />
+        <string>This TrueView will display a line graph that shows the OEE percentage from the previous six months for workcenters.</string>
+        <string />
+        <string>The Workcenters that will be displayed will be the ones setup through the TrueView WIP by Workcenter.</string>
+        <string />
+        <string>The Line Graph will display the number of Months in the X axis and the OEE Percentage within the Y Axis.</string>
+        <string />
+        <string>The GAB script can be ran through a task scheduled item or through a custom menu item.</string>
+        <string />
+        <string />
+        <string>Program.Sub.Comments.End</string>
+        <string />
+        <string />
+      </Lines>
+    </TextStrings>
+  </TextSource>
+  <Scrolling>
+    <WindowOriginY>395</WindowOriginY>
+  </Scrolling>
+  <Outlining>
+    <AllowOutlining>true</AllowOutlining>
+    <ImageSize>8</ImageSize>
+    <Ranges>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>0</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>21</Y>
+        </EndPoint>
+        <Text>Program.Sub.ScreenSU</Text>
+        <DisplayText>Program.Sub.ScreenSU</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>23</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>60</Y>
+        </EndPoint>
+        <Text>Program.Sub.Preflight</Text>
+        <DisplayText>Program.Sub.Preflight</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>62</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>133</Y>
+        </EndPoint>
+        <Text>Program.Sub.Main</Text>
+        <DisplayText>Program.Sub.Main</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>135</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>154</Y>
+        </EndPoint>
+        <Text>Program.Sub.Unload</Text>
+        <DisplayText>Program.Sub.Unload</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>156</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>179</Y>
+        </EndPoint>
+        <Text>Program.Sub.Load_Options</Text>
+        <DisplayText>Program.Sub.Load_Options</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>181</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>329</Y>
+        </EndPoint>
+        <Text>Program.Sub.Load_Data</Text>
+        <DisplayText>Program.Sub.Load_Data</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>331</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>434</Y>
+        </EndPoint>
+        <Text>Program.Sub.Render_Chart</Text>
+        <DisplayText>Program.Sub.Render_Chart</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>436</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>504</Y>
+        </EndPoint>
+        <Text>Program.Sub.Create_HTML</Text>
+        <DisplayText>Program.Sub.Create_HTML</DisplayText>
+        <Visible>true</Visible>
+        <Level>0</Level>
+      </Range>
+      <Range>
+        <StartPoint>
+          <X>0</X>
+          <Y>506</Y>
+        </StartPoint>
+        <EndPoint>
+          <X>2147483647</X>
+          <Y>531</Y>
+        </EndPoint>
+        <Text>Program.Sub.Comments</Text>
+        <DisplayText>Program.Sub.Comments</DisplayText>
+        <Visible>false</Visible>
+        <Level>0</Level>
+      </Range>
+    </Ranges>
+  </Outlining>
+  <HyperText />
+  <Spelling />
+  <Braces />
+</SyntaxEdit>
